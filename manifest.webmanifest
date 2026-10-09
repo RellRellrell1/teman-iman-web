@@ -1,0 +1,2 @@
+{"name":"Teman Iman","short_name":"Teman Iman","description":"Jadwal salat, Al-Qur'an, ibadah, gizi, dan tanya AI","start_url":"./","scope":"./","display":"standalone","orientation":"portrait","background_color":"#121615","theme_color":"#121615","lang":"id",
+ "icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}
