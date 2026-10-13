@@ -1169,8 +1169,18 @@ document.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{CFG.theme=b.dat
  document.querySelectorAll('[data-th]').forEach(b=>b.insertAdjacentHTML('afterbegin',svgI(ic[b.dataset.th]).replace('class="ico"','class="mi"')))})();
 applyTheme();setInterval(()=>{if((CFG.theme||'dark')==='auto')applyTheme()},60000);
 const _ptR17=ptRefresh;ptRefresh=function(){_ptR17();applyTheme()};
+
+// ===== Ganti hari saat aplikasi terbuka (v19) =====
+let DAYK=today();
+function newDay(){DAYK=today();try{$('tgl').textContent=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'short'})}catch(e){}
+ try{home()}catch(e){}try{renderToday()}catch(e){}try{showAyat()}catch(e){}try{renderQTop()}catch(e){}try{calR()}catch(e){}
+ if(typeof DSEL!=='undefined'&&DSEL<DAYK&&KS==='day'&&!$('t-kal').hidden){DSEL=DAYK;renderDay()}
+ if(!$('t-ibadah').hidden){IBD=DAYK;renderIb()}}
+setInterval(()=>{if(today()!==DAYK)newDay()},20000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&today()!==DAYK)newDay()});
+const _res19=window.onResumeApp;window.onResumeApp=()=>{_res19&&_res19();if(today()!==DAYK)newDay()};
 // Update otomatis (lihat CLAUDE.md)
-const APP_V=18;
+const APP_V=19;
 const UPD={o:'RellRellrell1',r:'teman-iman',b:'main'};
 const NT=window.TI&&window.TI.appUrl?window.TI:null;
 function showUpd(rec){if($('upbar'))return;const b=el('div','upbar');b.id='upbar';b.appendChild(el('span',null,'✨ Versi baru '+rec.v+' siap'+(rec.notes?': '+rec.notes:'')));const x=el('button','btn','Pakai sekarang');x.onclick=()=>location.replace(NT.appUrl());b.appendChild(x);document.body.appendChild(b)}
